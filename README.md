@@ -52,7 +52,8 @@ MSSQL
 
 Razor Pages / MVC
 
-📥 TXT Dosyası Formatı Örneği
+📥 TXT Dosyası Formatı Örneği:
+
 accept - kabul etmek /A1
 although - rağmen, -e karşın / B1 *(Bağlaç olduğunu belirtmek için "*" konuluyor.)
 run - koşmak, işletmek /A2 
