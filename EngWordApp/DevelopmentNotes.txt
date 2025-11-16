@@ -1,0 +1,3 @@
+﻿En son sonuç sayfasından sonraki soruya action'lar ile gitmeye sağlanma aşamasında kalındı.
+
+kategori seçme sayfasından int'ler gönderilecek ve controller'da enum kullanılarak istenilen veriler db'den çekilecek.

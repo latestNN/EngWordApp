@@ -1,0 +1,199 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask ile Veri Güncelleme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Yatayda ortala */
+            align-items: center; /* Dikeyde ortala */
+            height: 100vh; /* Sayfanın tamamını kapla */
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Ortalanacak div */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+
+
+        .mainQ {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #2C3E50;
+            border: #1A252F solid 2px;
+            border-radius: 5px;
+            color: white;
+            width: 120px;
+            height: 60px;
+        }
+
+        .cevaplaLabel {
+            margin-top: 10px;
+            width: 400px;
+        }
+
+        input {
+            padding: 15px;
+            border: #1A252F solid 2px;
+            border-radius: 5px;
+            width: 400px;
+        }
+
+        .kelimeContainer {
+            width: 400px;
+            height: 120px;
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .kelimeProp {
+            font-family: "Boldonse", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+        }
+
+        .kelimePropWrong {
+            font-family: "Boldonse", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+            color: #ff3333;
+        }
+
+        h1 {
+            color: #1A252F;
+            font-family: "Boldonse", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .nextQ {
+            margin-top: 10px;
+        }
+
+        .otherButtonsContainer {
+            display: flex; /* Flexbox kullanımı */
+            justify-content: space-between; /* Divler arasında boşluk bırak */
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+    <div class="container">
+
+
+
+        <!-- Güncellenen veriyi gösterecek alan -->
+        @* {% if engWrd == "Dogru"%}
+        <div class="kelimeContainer">
+            <p class="kelimeProp" style="color: #38b000;">Cevap doğru</p>
+
+        </div>
+
+        {% elif engWrd == "Yanlis" %}
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Doğrusu: {{trWrd}}</p>
+            <p class="kelimePropWrong">cevap Yanlış!</p>
+
+
+        </div>
+        {% elif engWrd == "Bitti" %}
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Günlük tüm kelimeler cevaplandı.</p>
+
+
+        </div> *@
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Hafta:  @ViewBag.wordWeek</p>
+        </div>
+
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Level:  @ViewBag.wordLevel</p>
+        </div>
+        
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Kelime:  @ViewBag.firstWord</p>
+        </div>
+        
+
+
+        <!-- Form ile veri gönderme -->
+        <div class="formConatiner">
+            <div class="mainQ">
+                <form class="forms" method="post" asp-action="CheckResult">
+                    <div class="boxLable">
+                        <input type="text" name="result" placeholder="Cevap" required>
+                    </div>
+                    <div class="cevaplaLabel">
+                        <button value="@ViewBag.Filter" name="filter" class="button" style="width: 435px;" type="submit">Cevapla</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="otherButtonsContainer">
+                <div class="nextQ">
+
+                    <form class="forms" action="/NextQuestion?filter=@(ViewBag.Filter)" method="POST">
+                        <label>
+                            <button class="button" type="submit">Sonraki Soru @ViewBag.Filter</button>
+                        </label>
+                    </form>
+                </div>
+
+                <div class="nextQ">
+                    <form class="forms" action="/typo?filter=@ViewBag.Filter" method="POST">
+                        <label>
+                            <button class="button" type="submit">Yazım Hatası</button>
+                        </label>
+
+                    </form>
+                </div>
+
+                <div class="nextQ">
+                    <form class="forms" action="/halfCorrect?filter=@ViewBag.Filter" method="POST">
+                        <label>
+                            <button class="button" type="submit">Yakındı</button>
+                        </label>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
+
+</body>
+</html>

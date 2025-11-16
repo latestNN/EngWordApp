@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask ile Veri Güncelleme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Yatayda ortala */
+            align-items: center; /* Dikeyde ortala */
+            height: 100vh; /* Sayfanın tamamını kapla */
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Ortalanacak div */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+
+
+        .mainQ {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #2C3E50;
+            border: #1A252F solid 2px;
+            border-radius: 5px;
+            color: white;
+            width: 120px;
+            height: 60px;
+        }
+
+        .cevaplaLabel {
+            margin-top: 10px;
+            width: 400px;
+        }
+
+        input {
+            padding: 15px;
+            border: #1A252F solid 2px;
+            border-radius: 5px;
+            width: 400px;
+        }
+
+        .kelimeContainer {
+            width: 400px;
+            height: 120px;
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .kelimeProp {
+            font-family: "Boldonse", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+        }
+
+        .kelimePropWrong {
+            font-family: "Boldonse", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+            color: #ff3333;
+        }
+
+        h1 {
+            color: #1A252F;
+            font-family: "Boldonse", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .nextQ {
+            margin-top: 10px;
+        }
+
+        .otherButtonsContainer {
+            display: flex; /* Flexbox kullanımı */
+            justify-content: space-between; /* Divler arasında boşluk bırak */
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+    <div class="container">
+
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Kelime:  @ViewBag.engWord</p>
+        </div>
+
+
+        <!-- Güncellenen veriyi gösterecek alan -->
+        @if (ViewBag.reusltReturn == true)
+        {
+            <div class="kelimeContainer">
+                <p class="kelimeProp" style="color: #38b000;">Cevap doğru</p>
+
+            </div>
+        }
+        else if (ViewBag.reusltReturn == false)
+        {
+            <div class="kelimeContainer">
+                <p class="kelimeProp">Doğrusu: @ViewBag.rightTrWord</p>
+                <p class="kelimePropWrong">cevap Yanlış!</p>
+            </div>
+        }
+
+        
+        @* {% elif engWrd == "Bitti" %}
+        <div class="kelimeContainer">
+            <p class="kelimeProp">Günlük tüm kelimeler cevaplandı.</p>
+        </div>   *@
+
+
+        
+
+
+
+        <!-- Form ile veri gönderme -->
+        <div class="formConatiner">
+            
+
+            <div class="otherButtonsContainer">
+                <div class="nextQ">
+                    <label>
+                        <a href="/Default/NextQuestion?filter=@ViewBag.Filter">Sonraki Soru</a>
+                    </label>
+                </div>
+
+                <div class="nextQ">
+                    <label>
+                        <a href="/Default/Typo?filter=@ViewBag.Filter/">Yazım Hatası</a>
+                    </label>
+                </div>
+
+                <div class="nextQ">
+                    <label>
+                        <a href="/Default/ItWasClose?filter=@ViewBag.Filter">Yakındı</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+</html>
+
