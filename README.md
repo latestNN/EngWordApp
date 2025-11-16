@@ -3,6 +3,7 @@
 Belirli formatta hazırlanmış .txt dosyalarından İngilizce kelimeleri, Türkçe anlamlarını ve seviyelerini okuyup bir veritabanına kaydeden; sonrasında ise bu kelimelerle quiz yapan bir ASP.NET Core uygulaması.
 
 🧩Özellikler
+
 🔹 Kelime Yükleme
 
 Kullanıcı, belirli formatta hazırlanmış .txt dosyasını yükler.
