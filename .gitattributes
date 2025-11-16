@@ -5,7 +5,7 @@
 .html linguist-detectable=false
 .css linguist-detectable=false
 .obsidian/** linguist-vendored
-linguist-language=Html
+linguist-language=C#
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
