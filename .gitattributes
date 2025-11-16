@@ -2,8 +2,8 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-*.html linguist-detectable=false
-*.css linguist-detectable=false
+.html linguist-detectable=false
+.css linguist-detectable=false
 .obsidian/** linguist-vendored
 ###############################################################################
 # Set default behavior for command prompt diff.
